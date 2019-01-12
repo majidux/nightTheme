@@ -22,7 +22,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     homeStyle: {
         flex: 1,
-        backgroundColor: 'wheat'
+        // backgroundColor: 'wheat'
     },
     headerView:{
         flex:1
