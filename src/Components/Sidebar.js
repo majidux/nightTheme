@@ -1,52 +1,72 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import dataSidebar from './DataSidebar';
 
 export default class Sidebar extends Component {
+    
     render() {
+        
+        let [item]=dataSidebar;
         return (
-            <View style={styles.className}>
+            
+            
+            <View style={styles.sideBar}>
                 <View>
                     <View style={styles.titleMenu}>
                         <Text>MENU</Text>
                     </View>
-                    <View style={styles._item}>
-                        <View>
-                            <Image
-                                source={require('../Assets/image/result.png')}
-                            />
+                    {  dataSidebar.map((item,i) =>
+                        <View key={i} style={[styles._item,item.selected ? styles.selectedBg : null]}>
+                            <View>
+                                <Image
+                                    source={item.image}
+                                />
+                            </View>
+                            <View style={styles.itemText}>
+                                <Text style={item.selected ? styles.blueColor : null}>{item.name}</Text>
+                            </View>
                         </View>
-                        <View style={styles.itemText}>
-                            <Text>My Courses</Text>
-                        </View>
-                    </View>
+                    )
+                    }
                 </View>
+            
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    className: {
+    sideBar: {
         flex: 1,
-        backgroundColor: 'lightgreen',
+        backgroundColor: '#ffffff',
         borderRightColor: '#f5f5f5',
         borderRightWidth: 2,
     },
     _item: {
         flexDirection: 'row',
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         height: 40,
         // justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 40
+        paddingLeft: 40,
     },
-    itemText:{
-        marginLeft: 20
+    itemText: {
+        marginLeft: 20,
+        
     },
-    titleMenu:{
+    titleMenu: {
         paddingLeft: 20,
-        backgroundColor:'blue',
-        paddingVertical: 20,
+        // backgroundColor: 'blue',
+        paddingVertical: 19,
         justifyContent: 'center',
         // alignItems: 'center'
+    },
+    blueColor:{
+        color:'#0073eb',
+
+    },
+    selectedBg:{
+        backgroundColor: '#edf3fc',
+        borderLeftColor:'#0073eb',
+        borderLeftWidth: 4,
     }
 });
