@@ -22,5 +22,5 @@ export default dataSidebar=[
         key:'4',
         name:'My Messages',
         image: require('../Assets/image/black-envelope.png'),
-    }
+    },
 ]
